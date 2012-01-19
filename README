@@ -1,0 +1,5 @@
+This is a custom library I'm starting that will include all kinds of javascript snippets I find useful.
+
+I will add them all to one file. They will possibly depend on Underscore.js and jQuery.js, and all of the functions will be attached to the "dollars" variable $$.
+
+This library is definitely not meant for production but rather for fast prototyping. Afterwards one could pick and choose the parts that are used.

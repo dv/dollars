@@ -27,14 +27,23 @@ dollars.formatSize = function(size, precisionArg, thresholdArg) {
 //  $$.filterKeys(obj, ["name", "age"]);
 //  // This would return
 //  { name: "David", age: 25 }
-dollars.filterKeys = function(collection, keys) {
+dollars.filterKeys = function(collection, keys, predicate) {
   var results = {};
+  var predicateArg = predicate || _.include;
 
   _.each(collection, function(value, key) {
-    if (_.include(keys, key)) {
+    if (predicateArg(keys, key)) {
       results[key] = value;
     }
   });
   
   return results;
+}
+
+// Does the opposite of `filterKeys`: creates a new object
+// containing key-values that were not in keys.
+dollars.withoutKeys = function(collection, keys) {
+  return dollars.filterKeys(collection, keys, function(a, b) {
+    return !_.include(a, b);
+  });
 }
